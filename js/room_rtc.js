@@ -1,4 +1,4 @@
-const APP_ID = "";
+const APP_ID = "859259db01bd4e7d928dc5e6f9b12585";
 
 let uid = sessionStorage.getItem("uid");
 if (!uid) {
@@ -22,7 +22,7 @@ if (!roomId) {
 
 let displayName = sessionStorage.getItem("display_name");
 if (!displayName) {
-  window.location = "lobby.html";
+  window.location = "index.html";
 }
 
 let localTracks = [];
