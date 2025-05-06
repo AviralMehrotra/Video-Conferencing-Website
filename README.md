@@ -1,6 +1,6 @@
 # ✨ Video Conferencing Website
 
-Welcome to the Video Conferencing Website project! 🎥 This web application allows users to seamlessly conduct video conferences, share audio 🎙️, collaborate with multiple participants 👥, and even share their screens 📺. The project is built using AgoraRTC, a powerful real-time communication library. 🚀
+Welcome to the Video Conferencing Website project! 🎥 This web-application allows users to seamlessly conduct video conferences, share audio 🎙️, collaborate with multiple participants 👥, and even share their screens 📺. The project is built using AgoraRTC, a powerful real-time communication library. 🚀
 
 ## 🌟 Features
 
