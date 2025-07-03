@@ -127,7 +127,8 @@ let handleUserPublished = async (user, mediaType) => {
 
 let handleUserLeft = async (user) => {
   delete remoteUsers[user.uid];
-  document.getElementById(`user-container-${user.uid}`).remove();
+  let el = document.getElementById(`user-container-${user.uid}`);
+  if (el) el.remove();
 
   if (userIdInDisplayFrame === `user-container-${user.uid}`) {
     displayFrame.style.display = null;
@@ -207,11 +208,37 @@ let toggleScreenShare = async (e) => {
   }
 };
 
+let leaveMeeting = async () => {
+  if (client) {
+    await client.leave();
+    client.removeAllListeners();
+  }
+  if (channel) {
+    await channel.leave();
+  }
+  if (localTracks && localTracks.length > 0) {
+    for (let track of localTracks) {
+      if (track) {
+        track.stop();
+        track.close();
+      }
+    }
+  }
+  if (localScreenTracks) {
+    localScreenTracks.stop();
+    localScreenTracks.close();
+  }
+  window.location = "index.html";
+};
+
 document.getElementById("camera-btn").addEventListener("click", toggleCamera);
 document.getElementById("mic-btn").addEventListener("click", toggleMic);
 document
   .getElementById("screen-share-btn")
   .addEventListener("click", toggleScreenShare);
-document.getElementById("leave-btn").addEventListener("click", handleUserLeft);
+document.getElementById("leave-btn").removeEventListener("click", handleUserLeft);
+if (document.getElementById("leave-btn")) {
+  document.getElementById("leave-btn").addEventListener("click", leaveMeeting);
+}
 
 joinRoomInit();
